@@ -7,5 +7,9 @@ from .serializers import studentSerializer
 def student_list(request):
     students = student.objects.all()
     serializer = studentSerializer(students, many=True)
-    return JsonResponse(serializer.data, safe=False)
-
+    response = JsonResponse(serializer.data, safe=False)
+    response['Access-Control-Allow-Origin'] = '*'
+    response['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+    response['Access-Control-Max-Age'] = '1000'
+    response['Access-Control-Allow-Headers']= 'X-Requested-With, Content-type'
+    return response 
