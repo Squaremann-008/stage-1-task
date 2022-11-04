@@ -16,18 +16,16 @@ def student_list(request):
         return Response(serializer.data[0])
 
 def test3(request):
-    #serializer2 = InputSerializer(data=request.data)
-    if request.method == 'POST':
-        serializer2 = InputSerializer(data=request.data)
-
-        if serializer2.is_valid():
-            serializer2.save() 
+    serializer2 = InputSerializer(data=request)
+    
+    if serializer2.is_valid():
+        serializer2.save() 
 
     operation = input.objects.all()
     serializer2 = InputSerializer(operation, many=True)
-    choice = serializer2.data[-1]["operation_type"]  
-   
-
+    choice = serializer2.data[-1]["operation_type"]
+      
+    
     def res():
         num1 = serializer2.data[-1]["x"]
         num2 = serializer2.data[-1]["y"] 
@@ -56,5 +54,6 @@ def test3(request):
     #return Response(answer)
 
     answer = res()
-    return Response({"slackUsername": "Oiseh", "result": answer, "operation_type" : choice}) 
+    return JsonResponse({"slackUsername": "Oiseh", "result": answer, "operation_type" : choice} ) 
+
 
