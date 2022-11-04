@@ -1,7 +1,12 @@
 from rest_framework import serializers
-from .models import student
+from .models import Input
 
-class studentSerializer(serializers.ModelSerializer):
+#class studentSerializer(serializers.ModelSerializer):
+    #class Meta:
+        #model = student
+        #fields = ['slackUsername', 'backend', 'age', 'bio']
+
+class InputSerializer(serializers.ModelSerializer):
     class Meta:
-        model = student
-        fields = ['slackUsername', 'backend', 'age', 'bio']
+        model = Input
+        fields = ['operation_type', 'x', 'y']

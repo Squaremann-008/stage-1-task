@@ -19,5 +19,5 @@ from restapi import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', views.student_list),
+    path('', views.test3),
 ]
