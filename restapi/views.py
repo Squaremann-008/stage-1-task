@@ -4,7 +4,8 @@ from .models import input, student
 from .serializers import InputSerializer, studentSerializer
 from rest_framework import status
 from rest_framework.decorators import api_view
-from rest_framework.response import Response 
+from rest_framework.response import Response
+
 
 # Create your views here.
 @api_view(['POST', 'GET'])
@@ -15,8 +16,10 @@ def student_list(request):
         serializer = studentSerializer(students, many=True)
         return Response(serializer.data[0])
 
+@api_view(['POST', 'GET'])
+
 def test3(request):
-    serializer2 = InputSerializer(data=request)
+    serializer2 = InputSerializer(data=request.data)
     
     if serializer2.is_valid():
         serializer2.save() 
@@ -54,6 +57,6 @@ def test3(request):
     #return Response(answer)
 
     answer = res()
-    return JsonResponse({"slackUsername": "Oiseh", "result": answer, "operation_type" : choice} ) 
+    return Response({"slackUsername": "Oiseh", "result": answer, "operation_type" : choice})
 
 
