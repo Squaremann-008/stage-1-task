@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Input, student
+from .models import input, student
 from .serializers import InputSerializer, studentSerializer
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -23,7 +23,7 @@ def test3(request):
         if serializer2.is_valid():
             serializer2.save() 
 
-    operation = Input.objects.all()
+    operation = input.objects.all()
     serializer2 = InputSerializer(operation, many=True)
     choice = serializer2.data[-1]["operation_type"]  
    
@@ -37,7 +37,7 @@ def test3(request):
         mul = num1 * num2 
 
         if choice == "addition":
-            result = add
+            result = add 
         elif choice == "subtraction":
             result = sub
         elif choice == "multiplication":

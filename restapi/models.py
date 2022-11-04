@@ -9,7 +9,7 @@ class student(models.Model):
     
     def __str__(self):
         return self.slackUsername
-class Input(models.Model):
+class input(models.Model):
 
     OPERATION_CHOICES = [
         ("addition", "add"),

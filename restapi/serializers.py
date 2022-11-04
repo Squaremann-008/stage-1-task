@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Input, student
+from .models import input, student
 
 class studentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,5 +8,5 @@ class studentSerializer(serializers.ModelSerializer):
 
 class InputSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Input
+        model = input
         fields = ['operation_type', 'x', 'y']
