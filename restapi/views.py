@@ -17,7 +17,6 @@ def student_list(request):
         return Response(serializer.data[0])
 
 @api_view(['POST', 'GET'])
-
 def test3(request):
     serializer2 = InputSerializer(data=request.data)
     
